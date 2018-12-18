@@ -8,3 +8,13 @@ XSLT normally takes XML as its input format.  However, most well-formed html can
 
 Other scenarios may arise, you never know -- my cable modem router uses xslt to format xml coming from the router, for example, when going to the admin page.  One could also use XSLT as a stand-in for template instantation, until it is ready.  Though you would probably need to run your object through a [object to xml converter](https://www.npmjs.com/package/object-to-xml) to do this.
 
+## Demo
+
+<!--
+```
+<custom-element-demo>
+<template>
+
+</custom-element-demo>
+```
+-->

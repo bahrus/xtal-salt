@@ -13,6 +13,9 @@
   "dependencies": {
     "xtal-latx": "0.0.85"
   },
+  "devDependencies": {
+    "jiife": "0.0.10"
+  },
   "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",
   "bugs": {
