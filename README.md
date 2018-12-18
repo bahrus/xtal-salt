@@ -249,7 +249,6 @@ Other scenarios may arise, you never know -- my cable modem router uses xslt to 
                     </div>
                 </xsl:template>
                 </xsl:stylesheet>
-            </template>
         </template>
         
         <p-d on="load" prop="xslString" val="target.innerHTML"></p-d>
