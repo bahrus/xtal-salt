@@ -10,8 +10,7 @@
 
 <body>
     <template id="src">
-            <?xml version="1.0" encoding="UTF-8"?>
-            <catalog id="src">
+            <catalog>
                 <cd>
                     <title>Empire Burlesque</title>
                     <artist>Bob Dylan</artist>
@@ -235,7 +234,7 @@
                     <div style="text-align:left">Title</div>
                     <div style="text-align:left">Artist</div>
                 </div>
-                <xsl:for-each select="catalog//cd">
+                <xsl:for-each select="catalog/cd">
                     <div>
                         <div><xsl:value-of select="title" /></div>
                         <div><xsl:value-of select="artist" /></div>
