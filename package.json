@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/bahrus/xtal-salt.git"
   },
-  "author": "",
+  "dependencies": {
+    "xtal-latx": "0.0.85"
+  },
+  "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bahrus/xtal-salt/issues"
