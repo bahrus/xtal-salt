@@ -15,6 +15,16 @@ XSLT (< 3.0) normally takes XML as its input format.  However, most well-formed 
 
 Other scenarios may arise, you never know -- my cable modem router uses xslt to format xml coming from the router, for example, when going to the admin page.  One could also use XSLT as a stand-in for template instantation, until it is ready.  Though you would probably need to run your object through an [object to xml converter](https://www.npmjs.com/package/object-to-xml) to do this.
 
+In the thoughtful, informative essay, [An Adventure with Client-Side XSLT to an Architecture for Building Bridges with Javascript](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html), a representative from O'Connor's publishing writes:
+
+>As a legal publisher, one of our main product categories is template-style forms for attorneys, which have undergone a limited evolution in their path to electronic delivery. We have traditionally delivered forms to customers as printed books of forms and subordinate forms for the customer to fill in and manually assemble into a complete document. More recently, we launched a subscription-based online service to deliver all of our content from the web. A departure from a book-oriented concept, the online service joins all of our content together, so users can search across the complete corpus, browse content organized by topic or practice area, annotate, and download forms.
+
+>Truly unified with a modern JavaScript UI, we built an XSLT-based application on our terms, uncompromised by the gravity of top-down XML and JavaScript frameworks, and we believe there are strong incentives for combining technologies, each with their best foot forward. 
+
+and concludes:
+
+>Over the last twenty years, the Web has grown increasingly separated from its early XML influences. Despite its evolution into a towering JavaScript monoculture, its ecosystems are now converging on architectures that are fundamentally capable of bridging the gap to other languages. Out of a desire to test that theory, and having a suitable use case for XSLT, emerged a great opportunity to put browser XSLT engines through their paces—and we found them nearly as capable as ever!
+
 ## Virtual DOM comes to XSLT?  
 
 Note that version [3.0 of XSLT supports JSON as an input format](https://www.xml.com/articles/2017/02/14/why-you-should-be-using-xslt-30/).  To my knowledge, no browser supports 3.0 yet, [though a hefty 70kb gzipped/minifed JS library is available](http://www.saxonica.com/download/javascript.xml).  Whereas something like lit-html or hyperHTML requires converting dynamic JSON coming from the server to an object, XSLT 3.0 can take the unparsed JSON as it's input.  And interestingly, XSLT 3.0 seems to [support](http://www.saxonica.com/saxon-js/documentation/index.html) sub template updating:
@@ -24,6 +34,8 @@ Note that version [3.0 of XSLT supports JSON as an input format](https://www.xml
 
 
 ## Demo 1
+
+NB:  [CD's](https://www.w3schools.com/xml/xsl_intro.asp) were a popular storage format for music, encyclopedia's, software installation, and PC backup in the [last millenium](https://www.urbandictionary.com/define.php?term=CD).
 
 <!--
 ```
