@@ -6,7 +6,7 @@
 
 # xtal-salt
 
-xtal-salt allows us to party like it's 1999, and take advantage of the [increasingly popular](https://www.chromestatus.com/metrics/feature/timeline/popularity/79) XSLT processing that [all modern browsers](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html#d8834e412) support.  
+xtal-salt allows us to party like it's 1999, and take advantage of the [increasingly popular](https://www.chromestatus.com/metrics/feature/timeline/popularity/79) XSLT processing that [all modern browsers](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html#d8834e412) support.  XSLT was the first isomorphic solution.
 
 
 ## Use cases
