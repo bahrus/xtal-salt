@@ -23,10 +23,6 @@ Note that version (3.0 of XSLT supports JSON as an input format)[https://www.xml
 
 
 
-
-
-  
-
 ## Demo 1
 
 <!--
