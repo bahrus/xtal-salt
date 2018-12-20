@@ -6,13 +6,26 @@
 
 # xtal-salt
 
-xtal-salt allows us to party like it's 1999, and take advantage of the [increasingly popular](https://www.chromestatus.com/metrics/feature/timeline/popularity/79) XSLT processing that [all modern browsers](https://developer.mozilla.org/en-US/docs/Web/XSLT/XSLT_JS_interface_in_Gecko/Advanced_Example) support.
+xtal-salt allows us to party like it's 1999, and take advantage of the [increasingly popular](https://www.chromestatus.com/metrics/feature/timeline/popularity/79) XSLT processing that [all modern browsers](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html#d8834e412) support.  
+
 
 ## Use cases
 
-XSLT normally takes XML as its input format.  However, most well-formed html can also qualify.  This can be useful if the light children of an element should be simple html, but it needs to be transformed into complex HTML inside the Shadow DOM.
+XSLT (< 3.0) normally takes XML as its input format.  However, most well-formed html can also qualify.  This can be useful if the light children of an element should be simple html, but it needs to be transformed into complex HTML inside the Shadow DOM.
 
 Other scenarios may arise, you never know -- my cable modem router uses xslt to format xml coming from the router, for example, when going to the admin page.  One could also use XSLT as a stand-in for template instantation, until it is ready.  Though you would probably need to run your object through an [object to xml converter](https://www.npmjs.com/package/object-to-xml) to do this.
+
+## Virtual DOM comes to XSLT?  
+
+Note that version (3.0 of XSLT supports JSON as an input format)[https://www.xml.com/articles/2017/02/14/why-you-should-be-using-xslt-30/].  To my knowledge, no browser supports 3.0 yet, (though a heft 70kb gzipped/minifed JS library is available)[http://www.saxonica.com/download/javascript.xml].  Whereas something like lit-html or hyperHTML requires converting dynamic JSON coming from the server to an object, XSLT 3.0 can take the unparsed JSON as it's input.  And interestingly, XSLT 3.0 seems to [support](http://www.saxonica.com/saxon-js/documentation/index.html) sub template updating:
+
+>Instead, the stylesheet can contain rules that respond to user input, such as clicking on buttons, filling in form fields, or hovering the mouse. These events trigger template rules in the stylesheet which can be used to read additional data and modify the content of the HTML page.
+
+
+
+
+
+  
 
 ## Demo 1
 
@@ -102,6 +115,8 @@ Other scenarios may arise, you never know -- my cable modem router uses xslt to 
 
 ## Demo 2
 
+What's interesting here is that the XML input is an already parsed HTMLDocument node.  We try to pass that parsed node to xtal-salt, so that xtal-salt doesn't need to reparse the "xml".  This works for Chrome and Safari, but not Firefox and Edge.  For the latter two browsers, the xml is stringified and reparsed.
+
 <!--
 ```
 <custom-element-demo>
@@ -143,7 +158,8 @@ Other scenarios may arise, you never know -- my cable modem router uses xslt to 
 ```
 -->
 
-What's interesting here is that the input is a parsed HTMLDocument node.  We try to pass that parsed node to xtal-salt, so that xtal-salt doesn't need to reparse the "xml".  This works for Chrome, but not Firefox and Edge.  For those browsers, the xml is stringified and reparsed.
+
+
 
 ## Viewing Your Element
 
