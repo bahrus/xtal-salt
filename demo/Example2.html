@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <my-non-existent-element>
+            <!-- "Light Children" -->
+            <div>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                </ul>
+            </div>
+            <p-d on="load" to="xtal-salt" prop="xml" val="target.firstElementChild" m="1"></p-d>
+            <template>
+                <?xml version="1.0" encoding="UTF-8"?>
+                <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+                    <xsl:template match="/">
+                        <div>
+                            <xsl:for-each select="ul/li">
+                                <div>const x<xsl:value-of select="."></xsl:value-of> = <xsl:value-of select="."></xsl:value-of>;</div>
+                            </xsl:for-each>
+                        </div>
+
+                    </xsl:template>
+                </xsl:stylesheet>
+            </template>
+            <p-d on="load" to="xtal-salt" prop="xslString" val="target.innerHTML"></p-d>
+            <xtal-salt></xtal-salt>
+            <div role="target"></div>
+        </my-non-existent-element>
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/xtal-salt@0.0.6/dist/xtal-salt.iife.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
+    </div>
+</body>
+
+</html>
