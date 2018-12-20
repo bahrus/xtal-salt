@@ -11,11 +11,11 @@ xtal-salt allows us to party like it's 1999, and take advantage of the [increasi
 
 ## Use cases
 
-XSLT (< 3.0) normally takes XML as its input format.  However, most well-formed html can also qualify.  This can be useful if the light children of an element should be simple html, but it needs to be transformed into complex HTML inside the Shadow DOM.
+XSLT (< 3.0) normally takes XML as its input format.  However, most well-formed html can also qualify.  This can be useful if the light children of a custom element should be simple html, but it needs to be transformed into complex HTML (or som other form) inside the Shadow DOM.
 
 Other scenarios may arise, you never know -- my cable modem router uses xslt to format xml coming from the router, for example, when going to the admin page.  One could also use XSLT as a stand-in for template instantation, until it is ready.  Though you would probably need to run your object through an [object to xml converter](https://www.npmjs.com/package/object-to-xml) to do this.
 
-In the thoughtful, informative essay, [An Adventure with Client-Side XSLT to an Architecture for Building Bridges with Javascript](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html), a representative from O'Connor's publishing writes:
+In the thoughtful, informative essay [An Adventure with Client-Side XSLT to an Architecture for Building Bridges with Javascript](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html), a representative from O'Connor's publishing writes:
 
 >As a legal publisher, one of our main product categories is template-style forms for attorneys, which have undergone a limited evolution in their path to electronic delivery. We have traditionally delivered forms to customers as printed books of forms and subordinate forms for the customer to fill in and manually assemble into a complete document. More recently, we launched a subscription-based online service to deliver all of our content from the web. A departure from a book-oriented concept, the online service joins all of our content together, so users can search across the complete corpus, browse content organized by topic or practice area, annotate, and download forms.
 
