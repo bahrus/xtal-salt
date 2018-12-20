@@ -31,11 +31,11 @@ export class XtalSalt extends XtallatX(HTMLElement){
         this._xsltProcessor.importStylesheet(this._xsl);
         this.onPropsChange();
     }
-    _target!: HTMLElement;
+    _target: Element | null = null;
     get target(){
         return this._target;
     }
-    set target(t: HTMLElement){
+    set target(t: Element | null){
         this._target = t;
         this.onPropsChange();
     }
@@ -43,6 +43,7 @@ export class XtalSalt extends XtallatX(HTMLElement){
     _c = false;
     connectedCallback(){
         this._c = true;
+        this.style.display = 'none';
         this._upgradeProperties([disabled, 'xmlString', 'xslString']);
         this.onPropsChange();
     }
@@ -50,8 +51,14 @@ export class XtalSalt extends XtallatX(HTMLElement){
 
     onPropsChange(){
         if(this._disabled || !this._c || !this._xml || !this._xsltProcessor) return;
-        if(!this._target) {
-            this._target = this;
+        if(this._target === null) {
+            this._target = this.nextElementSibling;
+        }
+        if(this._target === null) {
+            setTimeout(() =>{
+                this.onPropsChange();
+            },50);
+            return;
         }
         this.style.display = (this._target === this) ? 'block' : 'none';
         this._target.innerHTML = '';

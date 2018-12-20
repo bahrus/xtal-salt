@@ -6,6 +6,7 @@ export class XtalSalt extends XtallatX(HTMLElement) {
     constructor() {
         super(...arguments);
         this._domParser = new DOMParser();
+        this._target = null;
         this._c = false;
     }
     static get is() { return 'xtal-salt'; }
@@ -36,14 +37,21 @@ export class XtalSalt extends XtallatX(HTMLElement) {
     }
     connectedCallback() {
         this._c = true;
+        this.style.display = 'none';
         this._upgradeProperties([disabled, 'xmlString', 'xslString']);
         this.onPropsChange();
     }
     onPropsChange() {
         if (this._disabled || !this._c || !this._xml || !this._xsltProcessor)
             return;
-        if (!this._target) {
-            this._target = this;
+        if (this._target === null) {
+            this._target = this.nextElementSibling;
+        }
+        if (this._target === null) {
+            setTimeout(() => {
+                this.onPropsChange();
+            }, 50);
+            return;
         }
         this.style.display = (this._target === this) ? 'block' : 'none';
         this._target.innerHTML = '';
