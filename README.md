@@ -17,7 +17,7 @@ Other scenarios may arise, you never know -- my cable modem router uses xslt to 
 
 ## Virtual DOM comes to XSLT?  
 
-Note that version (3.0 of XSLT supports JSON as an input format)[https://www.xml.com/articles/2017/02/14/why-you-should-be-using-xslt-30/].  To my knowledge, no browser supports 3.0 yet, (though a heft 70kb gzipped/minifed JS library is available)[http://www.saxonica.com/download/javascript.xml].  Whereas something like lit-html or hyperHTML requires converting dynamic JSON coming from the server to an object, XSLT 3.0 can take the unparsed JSON as it's input.  And interestingly, XSLT 3.0 seems to [support](http://www.saxonica.com/saxon-js/documentation/index.html) sub template updating:
+Note that version [3.0 of XSLT supports JSON as an input format](https://www.xml.com/articles/2017/02/14/why-you-should-be-using-xslt-30/).  To my knowledge, no browser supports 3.0 yet, [though a heft 70kb gzipped/minifed JS library is available](http://www.saxonica.com/download/javascript.xml).  Whereas something like lit-html or hyperHTML requires converting dynamic JSON coming from the server to an object, XSLT 3.0 can take the unparsed JSON as it's input.  And interestingly, XSLT 3.0 seems to [support](http://www.saxonica.com/saxon-js/documentation/index.html) sub template updating:
 
 >Instead, the stylesheet can contain rules that respond to user input, such as clicking on buttons, filling in form fields, or hovering the mouse. These events trigger template rules in the stylesheet which can be used to read additional data and modify the content of the HTML page.
 
