@@ -18,6 +18,21 @@ export class XtalSalt extends XtallatX(HTMLElement) {
         this._xml = this._domParser.parseFromString(nv, 'application/xml');
         this.onPropsChange();
     }
+    get xml() {
+        return this._xml;
+    }
+    set xml(nv) {
+        const ua = navigator.userAgent;
+        if ((ua.indexOf('Firefox') > -1) || (ua.indexOf('Edge') > -1)) {
+            const outerHTML = nv.outerHTML;
+            if (outerHTML) {
+                this.xmlString = outerHTML;
+                return;
+            }
+        }
+        this._xml = nv;
+        this.onPropsChange();
+    }
     get xslString() {
         return this._xslString;
     }
@@ -38,7 +53,7 @@ export class XtalSalt extends XtallatX(HTMLElement) {
     connectedCallback() {
         this._c = true;
         this.style.display = 'none';
-        this._upgradeProperties([disabled, 'xmlString', 'xslString']);
+        this._upgradeProperties([disabled, 'xmlString', 'xslString', 'xml']);
         this.onPropsChange();
     }
     onPropsChange() {

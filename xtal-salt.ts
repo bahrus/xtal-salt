@@ -6,7 +6,7 @@ import {XtallatX, disabled} from 'xtal-latx/xtal-latx.js';
 export class XtalSalt extends XtallatX(HTMLElement){
     static get is(){return 'xtal-salt';}
     _domParser = new DOMParser();
-    _xml!: Document;
+   
     _xsl!: Document;
     _xsltProcessor!: XSLTProcessor;
 
@@ -18,6 +18,25 @@ export class XtalSalt extends XtallatX(HTMLElement){
         this._xmlString = nv;
         this._xml = this._domParser.parseFromString(nv, 'application/xml');
         this.onPropsChange();
+    }
+
+    _xml!: Document;
+    get xml(){
+        return this._xml;
+    }
+    set xml(nv){
+        const ua = navigator.userAgent;
+        if((ua.indexOf('Firefox') > -1) || (ua.indexOf('Edge') > -1)){
+            const outerHTML = (<any>nv).outerHTML;
+            if(outerHTML){
+                this.xmlString = outerHTML;
+                return;
+            }
+        }
+        this._xml = nv;
+        this.onPropsChange();
+        
+
     }
 
     _xslString!: string;
@@ -44,7 +63,7 @@ export class XtalSalt extends XtallatX(HTMLElement){
     connectedCallback(){
         this._c = true;
         this.style.display = 'none';
-        this._upgradeProperties([disabled, 'xmlString', 'xslString']);
+        this._upgradeProperties([disabled, 'xmlString', 'xslString', 'xml']);
         this.onPropsChange();
     }
 
