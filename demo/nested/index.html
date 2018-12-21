@@ -30,10 +30,16 @@
                 <xsl:param name="list-id"></xsl:param>
                 <xsl:param name="input-role"></xsl:param>
                 <xsl:param name="tabindex"></xsl:param>
+                <xsl:variable name="label-class">
+                  <xsl:choose>
+                    <xsl:when test="$list-id = 'nav'">down</xsl:when>
+                    <xsl:otherwise>right</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:variable>
                 <xsl:variable name="link-id">link-<xsl:value-of select="summary/@label-id"></xsl:value-of></xsl:variable>
                 <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@label-id}" id="{$link-id}"
                    role="{$input-role}" tabindex="{$tabindex}" type="checkbox"/>
-                <label for="{$link-id}" id="{summary/@label-id}"><xsl:value-of select="summary"></xsl:value-of></label>
+                <label class="{$label-class}" for="{$link-id}" id="{summary/@label-id}"><xsl:value-of select="summary"></xsl:value-of></label>
                 <ul>
                   <li>
                       <xsl:apply-templates select="details">
