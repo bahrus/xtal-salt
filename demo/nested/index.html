@@ -22,17 +22,24 @@
             <xsl:template match="/">
                 <xsl:apply-templates select="details">
                   <xsl:with-param name="list-id">nav</xsl:with-param>
+                  <xsl:with-param name="input-role">button</xsl:with-param>
+                  <xsl:with-param name="tabindex">1</xsl:with-param>
                 </xsl:apply-templates>
             </xsl:template>
             <xsl:template match="details">
                 <xsl:param name="list-id"></xsl:param>
+                <xsl:param name="input-role"></xsl:param>
+                <xsl:param name="tabindex"></xsl:param>
                 <xsl:variable name="link-id">link-<xsl:value-of select="summary/@label-id"></xsl:value-of></xsl:variable>
-                <input aria-controls="{$list-id}" aria-haspopup='true' id="{$link-id}" aria-labelledby="{summary/@label-id}" type="checkbox">&nbsp;</input>
+                <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@label-id}" id="{$link-id}"
+                   role="{$input-role}" tabindex="{$tabindex}" type="checkbox"/>
                 <label for="{$link-id}" id="{summary/@label-id}"><xsl:value-of select="summary"></xsl:value-of></label>
                 <ul>
                   <li>
                       <xsl:apply-templates select="details">
                         <xsl:with-param name="list-id">nest</xsl:with-param>
+                        <xsl:with-param name="input-role">menu</xsl:with-param>
+                        <xsl:with-param name="tabindex" select="$tabindex + 1"></xsl:with-param>
                       </xsl:apply-templates>
                   </li>
                 </ul>
