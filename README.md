@@ -8,6 +8,7 @@
 
 xtal-salt allows us to party like it's 1999, and take advantage of the [increasingly popular](https://www.chromestatus.com/metrics/feature/timeline/popularity/79) XSLT processing that [all modern browsers](https://www.balisage.net/Proceedings/vol21/html/Thompson01/BalisageVol21-Thompson01.html#d8834e412) support.  XSLT was the first isomorphic solution.
 
+If one were to match up percent page load usage with country populations as a percentage of the world population, we are talking a country the size of Estonia.  Estonia, of course, is the birthplace of Skype and a world powerhouse in [naisekandmine competitions](http://www.citypaper.lv/wife-carrying__championships_in_estonia/).
 
 ## Use cases
 
@@ -170,6 +171,8 @@ What's interesting here is that the XML input is an already parsed HTMLDocument 
 
 Based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriellewee/pen/oWyObX).
 
+**NB**:  This example works in Chrome and Edge, but not yet Firefox.  WIP.
+
 <!--
 ```
 <custom-element-demo>
@@ -240,8 +243,9 @@ Based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriel
       <p-d on="load" prop="xslString" val="target.value"></p-d>
       <xtal-salt></xtal-salt>
     </co-depends-nested-dropdown>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/xtal-salt@0.0.11/dist/xtal-salt.iife.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/co-depends@0.0.16/nested-dropdown/dist/nested-dropdown.iife.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/co-depends@0.0.18/nested-dropdown/dist/nested-dropdown.iife.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
   </div>
 </template>
