@@ -58,7 +58,7 @@
                   </li>
                   <xsl:for-each select="a">
                       <li role="none">
-                          <a role="menuitem"><xsl:value-of select="."/></a>
+                          <a role="menuitem" tabindex="{$tabindex + 2}"><xsl:value-of select="."/></a>
                         </li>
                   </xsl:for-each>
                 </ul>
