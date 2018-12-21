@@ -2,7 +2,7 @@
 
 <a href="https://nodei.co/npm/xtal-salt/"><img src="https://nodei.co/npm/xtal-salt.png"></a>
 
-<img src="http://img.badgesize.io/https://unpkg.com/xtal-salt@0.0.6/dist/xtal-salt.iife.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://unpkg.com/xtal-salt@0.0.10/dist/xtal-salt.iife.min.js?compression=gzip">
 
 # xtal-salt
 

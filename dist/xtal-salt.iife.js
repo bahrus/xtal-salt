@@ -107,14 +107,19 @@ function XtallatX(superClass) {
 }
 // const xml_string = 'xml-string';
 // const xsl_string = 'xsl-string';
+const clear_selector = 'clear-selector';
 class XtalSalt extends XtallatX(HTMLElement) {
     constructor() {
         super(...arguments);
         this._domParser = new DOMParser();
+        this._clearSelector = null;
         this._target = null;
         this._c = false;
     }
     static get is() { return 'xtal-salt'; }
+    static get observedAttributes() {
+        return super.observedAttributes.concat(clear_selector);
+    }
     get xmlString() {
         return this._xmlString;
     }
@@ -143,7 +148,35 @@ class XtalSalt extends XtallatX(HTMLElement) {
     }
     set xslString(nv) {
         this._xslString = nv;
-        this._xsl = this._domParser.parseFromString(nv, 'text/xml');
+        this._xsl = this._domParser.parseFromString(nv, 'application/xml');
+        this.createProcessor();
+    }
+    get clearSelector() {
+        return this._clearSelector;
+    }
+    set clearSelector(nv) {
+        this.attr(clear_selector, nv);
+    }
+    attributeChangedCallback(n, ov, nv) {
+        switch (n) {
+            case clear_selector:
+                this._clearSelector = nv;
+                break;
+        }
+    }
+    // get xsl(){
+    //     return this._xsl;
+    // }
+    // set xsl(nv){
+    //     const t = (<any>nv) as HTMLTemplateElement;
+    //     if(t.localName === 'template'){
+    //         this._xsl = this.appendChild(t.content.cloneNode(true)) as Document
+    //     }else{
+    //         this._xsl = nv;
+    //     }
+    //     this.createProcessor();
+    // }
+    createProcessor() {
         this._xsltProcessor = new XSLTProcessor();
         this._xsltProcessor.importStylesheet(this._xsl);
         this.onPropsChange();
@@ -165,16 +198,15 @@ class XtalSalt extends XtallatX(HTMLElement) {
         if (this._disabled || !this._c || !this._xml || !this._xsltProcessor)
             return;
         if (this._target === null) {
-            this._target = this.nextElementSibling;
+            this._target = this.parentElement;
         }
-        if (this._target === null) {
-            setTimeout(() => {
-                this.onPropsChange();
-            }, 50);
+        if (this._target === null)
             return;
+        if (this._clearSelector) {
+            const clear = this._target.querySelector(this._clearSelector);
+            if (clear !== null)
+                clear.remove();
         }
-        this.style.display = (this._target === this) ? 'block' : 'none';
-        this._target.innerHTML = '';
         const resultDocument = this._xsltProcessor.transformToFragment(this._xml, document);
         this._target.appendChild(resultDocument);
     }

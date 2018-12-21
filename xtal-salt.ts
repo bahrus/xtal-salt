@@ -3,8 +3,13 @@ import {XtallatX, disabled} from 'xtal-latx/xtal-latx.js';
 
 // const xml_string = 'xml-string';
 // const xsl_string = 'xsl-string';
+const clear_selector = 'clear-selector';
 export class XtalSalt extends XtallatX(HTMLElement){
     static get is(){return 'xtal-salt';}
+    static get observedAttributes(){
+        return super.observedAttributes.concat(clear_selector);
+    }
+
     _domParser = new DOMParser();
    
     _xsl!: Document;
@@ -50,7 +55,20 @@ export class XtalSalt extends XtallatX(HTMLElement){
         
     }
 
-    
+    _clearSelector: string | null = null;
+    get clearSelector(){
+        return this._clearSelector;
+    }
+    set clearSelector(nv){
+        this.attr(clear_selector, nv);
+    }
+    attributeChangedCallback(n: string, ov: string, nv: string){
+        switch(n){
+            case clear_selector:
+                this._clearSelector = nv;
+                break;
+        }
+    }
     // get xsl(){
     //     return this._xsl;
     // }
@@ -91,16 +109,13 @@ export class XtalSalt extends XtallatX(HTMLElement){
     onPropsChange(){
         if(this._disabled || !this._c || !this._xml || !this._xsltProcessor) return;
         if(this._target === null) {
-            this._target = this.nextElementSibling;
+            this._target = this.parentElement;
         }
-        if(this._target === null) {
-            setTimeout(() =>{
-                this.onPropsChange();
-            },50);
-            return;
+        if(this._target === null) return;
+        if(this._clearSelector){
+            const clear = this._target.querySelector(this._clearSelector);
+            if(clear !== null) clear.remove();
         }
-        this.style.display = (this._target === this) ? 'block' : 'none';
-        this._target.innerHTML = '';
         const resultDocument = this._xsltProcessor.transformToFragment(this._xml, document);
         this._target.appendChild(resultDocument);
     }

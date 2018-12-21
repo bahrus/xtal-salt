@@ -2,14 +2,19 @@ import { define } from 'xtal-latx/define.js';
 import { XtallatX, disabled } from 'xtal-latx/xtal-latx.js';
 // const xml_string = 'xml-string';
 // const xsl_string = 'xsl-string';
+const clear_selector = 'clear-selector';
 export class XtalSalt extends XtallatX(HTMLElement) {
     constructor() {
         super(...arguments);
         this._domParser = new DOMParser();
+        this._clearSelector = null;
         this._target = null;
         this._c = false;
     }
     static get is() { return 'xtal-salt'; }
+    static get observedAttributes() {
+        return super.observedAttributes.concat(clear_selector);
+    }
     get xmlString() {
         return this._xmlString;
     }
@@ -40,6 +45,19 @@ export class XtalSalt extends XtallatX(HTMLElement) {
         this._xslString = nv;
         this._xsl = this._domParser.parseFromString(nv, 'application/xml');
         this.createProcessor();
+    }
+    get clearSelector() {
+        return this._clearSelector;
+    }
+    set clearSelector(nv) {
+        this.attr(clear_selector, nv);
+    }
+    attributeChangedCallback(n, ov, nv) {
+        switch (n) {
+            case clear_selector:
+                this._clearSelector = nv;
+                break;
+        }
     }
     // get xsl(){
     //     return this._xsl;
@@ -75,16 +93,15 @@ export class XtalSalt extends XtallatX(HTMLElement) {
         if (this._disabled || !this._c || !this._xml || !this._xsltProcessor)
             return;
         if (this._target === null) {
-            this._target = this.nextElementSibling;
+            this._target = this.parentElement;
         }
-        if (this._target === null) {
-            setTimeout(() => {
-                this.onPropsChange();
-            }, 50);
+        if (this._target === null)
             return;
+        if (this._clearSelector) {
+            const clear = this._target.querySelector(this._clearSelector);
+            if (clear !== null)
+                clear.remove();
         }
-        this.style.display = (this._target === this) ? 'block' : 'none';
-        this._target.innerHTML = '';
         const resultDocument = this._xsltProcessor.transformToFragment(this._xml, document);
         this._target.appendChild(resultDocument);
     }
