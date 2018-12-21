@@ -11,9 +11,9 @@
 <body style="height:100%">
     <div style="height:100%">
       <details>
-        <summary id="menu">Menu</summary>
+        <summary label-id="menu">Menu</summary>
         <details>
-          <summary id="shop">Shop</summary>
+          <summary label-id="shop">Shop</summary>
         </details>
       </details>
       <p-d on="load" to="xtal-salt" prop="xml" val="target"></p-d>
@@ -26,8 +26,8 @@
             </xsl:template>
             <xsl:template match="details">
                 <xsl:param name="list-id"></xsl:param>
-                <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@id}" type="checkbox">&nbsp;</input>
-                <label id="{summary/@id}"><xsl:value-of select="summary"></xsl:value-of></label>
+                <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@label-id}" type="checkbox">&nbsp;</input>
+                <label for="{concat('link-',summary/@label-id)}" id="{summary/@label-id}"><xsl:value-of select="summary"></xsl:value-of></label>
                 <ul>
                   <li>
                       <xsl:apply-templates select="details">
@@ -45,8 +45,8 @@
         <co-depends-nested-dropdown style="height:100%">
             
             <template slot="template">
-                <input aria-controls='nav' aria-haspopup='true' aria-labelledby='menu' id='link-top' role='button' tabindex='1' type='checkbox'>
-                <label class='down' for='link-top' id='menu' role='none' tabindex='-1'>Menu</label>
+                <input aria-controls='nav' aria-haspopup='true' aria-labelledby='menu' id='link-menu' role='button' tabindex='1' type='checkbox'>
+                <label class='down' for='link-menu' id='menu' role='none' tabindex='-1'>Menu</label>
                 <ul aria-labelledby='menu' id='nav' role='menu'>
                   <li role='none'>
                     <input aria-controls='nest' aria-haspopup='true' aria-labelledby='shop' id='link-shop' role='menuitem' tabindex='2' type='checkbox'>
