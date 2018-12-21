@@ -2,7 +2,7 @@
 
 <a href="https://nodei.co/npm/xtal-salt/"><img src="https://nodei.co/npm/xtal-salt.png"></a>
 
-<img src="http://img.badgesize.io/https://unpkg.com/xtal-salt@0.0.111/dist/xtal-salt.iife.min.js?compression=gzip">
+<img src="http://img.badgesize.io/https://unpkg.com/xtal-salt@0.0.12/dist/xtal-salt.iife.min.js?compression=gzip">
 
 # xtal-salt
 
@@ -167,6 +167,8 @@ What's interesting here is that the XML input is an already parsed HTMLDocument 
 -->
 
 ## Demo 3 -- Light Children Metamorphosis
+
+Based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriellewee/pen/oWyObX).
 
 <!--
 ```
