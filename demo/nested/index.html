@@ -20,10 +20,13 @@
       <textarea style="display:none">
         <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <xsl:template match="/">
-                <xsl:apply-templates select="details"></xsl:apply-templates>
+                <xsl:apply-templates select="details">
+                  <xsl:with-param name="aria-controls">nav</xsl:with-param>
+                </xsl:apply-templates>
             </xsl:template>
             <xsl:template match="details">
-                <input type="checkbox">&nbsp;</input>
+                <xsl:param name="aria-controls"></xsl:param>
+                <input aria-controls="{$aria-controls}" type="checkbox">&nbsp;</input>
                 <label><xsl:value-of select="summary"></xsl:value-of></label>
                 <ul>
                   <li>
