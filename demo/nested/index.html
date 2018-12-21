@@ -11,9 +11,9 @@
 <body style="height:100%">
     <div style="height:100%">
       <details>
-        <summary>Menu</summary>
+        <summary id="menu">Menu</summary>
         <details>
-          <summary>Shop</summary>
+          <summary id="shop">Shop</summary>
         </details>
       </details>
       <p-d on="load" to="xtal-salt" prop="xml" val="target"></p-d>
@@ -26,8 +26,8 @@
             </xsl:template>
             <xsl:template match="details">
                 <xsl:param name="list-id"></xsl:param>
-                <input aria-controls="{$list-id}" aria-haspopup='true' type="checkbox">&nbsp;</input>
-                <label><xsl:value-of select="summary"></xsl:value-of></label>
+                <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@id}" type="checkbox">&nbsp;</input>
+                <label id="{summary/@id}"><xsl:value-of select="summary"></xsl:value-of></label>
                 <ul>
                   <li>
                       <xsl:apply-templates select="details">
