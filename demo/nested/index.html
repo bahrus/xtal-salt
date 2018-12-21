@@ -10,105 +10,69 @@
 
 <body style="height:100%">
     <div style="height:100%">
-      <details>
-        <summary label-id="menu">Menu</summary>
+
         <details>
-          <summary label-id="shop">Shop</summary>
-          <a>Tops</a>
-          <a>Bottoms</a>
-          <a>Shoes</a>
-          <a>Accessories</a>
-          <a>Sales</a>
-        </details>
-        <a>Blog</a>
-        <a>About</a>
-        <a>Contact</a>
-      </details>
-      <p-d on="load" to="xtal-salt" prop="xml" val="target"></p-d>
-      <textarea style="display:none">
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-            <xsl:template match="/">
-                <xsl:apply-templates select="details">
-                  <xsl:with-param name="list-id">nav</xsl:with-param>
-                  <xsl:with-param name="input-role">button</xsl:with-param>
-                  <xsl:with-param name="tabindex">1</xsl:with-param>
-                </xsl:apply-templates>
-            </xsl:template>
-            <xsl:template match="details">
-                <xsl:param name="list-id"></xsl:param>
-                <xsl:param name="input-role"></xsl:param>
-                <xsl:param name="tabindex"></xsl:param>
-                <xsl:variable name="label-class">
-                  <xsl:choose>
-                    <xsl:when test="$list-id = 'nav'">down</xsl:when>
-                    <xsl:otherwise>right</xsl:otherwise>
-                  </xsl:choose>
-                </xsl:variable>
-                <xsl:variable name="link-id">link-<xsl:value-of select="summary/@label-id"></xsl:value-of></xsl:variable>
-                <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@label-id}" id="{$link-id}"
-                   role="{$input-role}" tabindex="{$tabindex}" type="checkbox"/>
-                <label class="{$label-class}" for="{$link-id}" id="{summary/@label-id}" role="none" tabindex="-1"><xsl:value-of select="summary"></xsl:value-of></label>
-                <ul aria-labelledby="{summary/@label-id}" id="{$list-id}" role="menu">
-                  <li role="none">
-                      <xsl:apply-templates select="details">
-                        <xsl:with-param name="list-id">nest</xsl:with-param>
-                        <xsl:with-param name="input-role">menu</xsl:with-param>
-                        <xsl:with-param name="tabindex" select="$tabindex + 1"></xsl:with-param>
-                      </xsl:apply-templates>
-                  </li>
-                  <xsl:for-each select="a">
+            <summary label-id="menu">Menu</summary>
+            <details>
+              <summary label-id="shop">Shop</summary>
+              <a>Tops</a>
+              <a>Bottoms</a>
+              <a>Shoes</a>
+              <a>Accessories</a>
+              <a>Sales</a>
+            </details>
+            <a>Blog</a>
+            <a>About</a>
+            <a>Contact</a>
+          </details>
+          <p-d on="load" to="xtal-salt" prop="xml" val="target"></p-d>
+          <textarea style="display:none">
+            <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+                <xsl:template match="/">
+                  <template slot="template">
+                    <xsl:apply-templates select="details">
+                      <xsl:with-param name="list-id">nav</xsl:with-param>
+                      <xsl:with-param name="input-role">button</xsl:with-param>
+                      <xsl:with-param name="tabindex">1</xsl:with-param>
+                    </xsl:apply-templates>
+                  </template>
+                </xsl:template>
+                <xsl:template match="details">
+                    <xsl:param name="list-id"></xsl:param>
+                    <xsl:param name="input-role"></xsl:param>
+                    <xsl:param name="tabindex"></xsl:param>
+                    <xsl:variable name="label-class">
+                      <xsl:choose>
+                        <xsl:when test="$list-id = 'nav'">down</xsl:when>
+                        <xsl:otherwise>right</xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:variable>
+                    <xsl:variable name="link-id">link-<xsl:value-of select="summary/@label-id"></xsl:value-of></xsl:variable>
+                    <input aria-controls="{$list-id}" aria-haspopup='true' aria-labelledby="{summary/@label-id}" id="{$link-id}"
+                       role="{$input-role}" tabindex="{$tabindex}" type="checkbox"/>
+                    <label class="{$label-class}" for="{$link-id}" id="{summary/@label-id}" role="none" tabindex="-1"><xsl:value-of select="summary"></xsl:value-of></label>
+                    <ul aria-labelledby="{summary/@label-id}" id="{$list-id}" role="menu">
                       <li role="none">
-                          <a role="menuitem" tabindex="{$tabindex + 2}"><xsl:value-of select="."/></a>
-                        </li>
-                  </xsl:for-each>
-                </ul>
-              
-            </xsl:template>
-    
-        </xsl:stylesheet>
-      </textarea>
-      <p-d on="load" prop="xslString" val="target.value"></p-d>
-      <xtal-salt></xtal-salt>
-      <template slot="template"></template>
-        <co-depends-nested-dropdown style="height:100%">
-            
-            <template slot="template">
-                <input aria-controls='nav' aria-haspopup='true' aria-labelledby='menu' id='link-menu' role='button' tabindex='1' type='checkbox'>
-                <label class='down' for='link-menu' id='menu' role='none' tabindex='-1'>Menu</label>
-                <ul aria-labelledby='menu' id='nav' role='menu'>
-                  <li role='none'>
-                    <input aria-controls='nest' aria-haspopup='true' aria-labelledby='shop' id='link-shop' role='menuitem' tabindex='2' type='checkbox'>
-                    <label class='right' for='link-shop' id='shop' role='none' tabindex='-1'>Shop</label>
-                    <ul aria-labelledby='shop' id='nest' role='menu'>
-                      <li role='none'>
-                        <a role='menuitem' tabindex='3'>Tops</a>
+                          <xsl:apply-templates select="details">
+                            <xsl:with-param name="list-id">nest</xsl:with-param>
+                            <xsl:with-param name="input-role">menu</xsl:with-param>
+                            <xsl:with-param name="tabindex" select="$tabindex + 1"></xsl:with-param>
+                          </xsl:apply-templates>
                       </li>
-                      <li role='none'>
-                        <a role='menuitem' tabindex='3'>Bottoms</a>
-                      </li>
-                      <li role='none'>
-                        <a role='menuitem' tabindex='3'>Shoes</a>
-                      </li>
-                      <li role='none'>
-                        <a role='menuitem' tabindex='3'>Accessories</a>
-                      </li>
-                      <li role='none'>
-                        <a role='menuitem' tabindex='3'>Sale</a>
-                      </li>
+                      <xsl:for-each select="a">
+                          <li role="none">
+                              <a role="menuitem" tabindex="{$tabindex + 2}"><xsl:value-of select="."/></a>
+                            </li>
+                      </xsl:for-each>
                     </ul>
-                  </li>
-                  <li role='none'>
-                    <a role='menuitem' tabindex='4'>Blog</a>
-                  </li>
-                  <li role='none'>
-                    <a role='menuitem' tabindex='4'>About</a>
-                  </li>
-                  <li role='none'>
-                    <a role='menuitem' tabindex='4'>Contact</a>
-                  </li>
-                </ul>
-            </template>
-        </co-depends-nested-dropdown>
+                  
+                </xsl:template>
+        
+            </xsl:stylesheet>
+          </textarea>
+          <p-d on="load" prop="xslString" val="target.value"></p-d>
+          <xtal-salt></xtal-salt>                  
+        <co-depends-nested-dropdown style="height:100%"></co-depends-nested-dropdown>
         <script type="module" src="../../xtal-salt.js"></script>
         <script type="module" src="https://cdn.jsdelivr.net/npm/co-depends@0.0.16/nested-dropdown/dist/nested-dropdown.iife.js"></script>
         <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
