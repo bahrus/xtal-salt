@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="height:100%">
+    <div style="height:100%">
+      <details>
+        <summary>Menu</summary>
+        <details>
+          <summary>Shop</summary>
+        </details>
+      </details>
+      <p-d on="load" to="xtal-salt" prop="xml" val="target"></p-d>
+      <textarea style="display:none">
+        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            <xsl:template match="/">
+                <xsl:apply-templates select="details"></xsl:apply-templates>
+            </xsl:template>
+            <xsl:template match="details">
+                <input type="checkbox">&nbsp;</input>
+                <label><xsl:value-of select="summary"></xsl:value-of></label>
+                <ul>
+                  <li>
+                      <xsl:apply-templates select="details"></xsl:apply-templates>
+                  </li>
+                </ul>
+              
+            </xsl:template>
+        </xsl:stylesheet>
+      </textarea>
+      <p-d on="load" prop="xslString" val="target.value"></p-d>
+      <xtal-salt></xtal-salt>
+      <template slot="template"></template>
+        <co-depends-nested-dropdown style="height:100%">
+            
+            <template slot="template">
+                <input aria-controls='nav' aria-haspopup='true' aria-labelledby='menu' id='link-top' role='button' tabindex='1' type='checkbox'>
+                <label class='down' for='link-top' id='menu' role='none' tabindex='-1'>Menu</label>
+                <ul aria-labelledby='menu' id='nav' role='menu'>
+                  <li role='none'>
+                    <input aria-controls='nest' aria-haspopup='true' aria-labelledby='shop' id='link-shop' role='menuitem' tabindex='2' type='checkbox'>
+                    <label class='right' for='link-shop' id='shop' role='none' tabindex='-1'>Shop</label>
+                    <ul aria-labelledby='shop' id='nest' role='menu'>
+                      <li role='none'>
+                        <a role='menuitem' tabindex='3'>Tops</a>
+                      </li>
+                      <li role='none'>
+                        <a role='menuitem' tabindex='3'>Bottoms</a>
+                      </li>
+                      <li role='none'>
+                        <a role='menuitem' tabindex='3'>Shoes</a>
+                      </li>
+                      <li role='none'>
+                        <a role='menuitem' tabindex='3'>Accessories</a>
+                      </li>
+                      <li role='none'>
+                        <a role='menuitem' tabindex='3'>Sale</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li role='none'>
+                    <a role='menuitem' tabindex='4'>Blog</a>
+                  </li>
+                  <li role='none'>
+                    <a role='menuitem' tabindex='4'>About</a>
+                  </li>
+                  <li role='none'>
+                    <a role='menuitem' tabindex='4'>Contact</a>
+                  </li>
+                </ul>
+            </template>
+        </co-depends-nested-dropdown>
+        <script type="module" src="../../xtal-salt.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/co-depends@0.0.16/nested-dropdown/dist/nested-dropdown.iife.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
+    </div>
+</body>
+
+</html>
+

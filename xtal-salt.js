@@ -38,7 +38,22 @@ export class XtalSalt extends XtallatX(HTMLElement) {
     }
     set xslString(nv) {
         this._xslString = nv;
-        this._xsl = this._domParser.parseFromString(nv, 'text/xml');
+        this._xsl = this._domParser.parseFromString(nv, 'application/xml');
+        this.createProcessor();
+    }
+    // get xsl(){
+    //     return this._xsl;
+    // }
+    // set xsl(nv){
+    //     const t = (<any>nv) as HTMLTemplateElement;
+    //     if(t.localName === 'template'){
+    //         this._xsl = this.appendChild(t.content.cloneNode(true)) as Document
+    //     }else{
+    //         this._xsl = nv;
+    //     }
+    //     this.createProcessor();
+    // }
+    createProcessor() {
         this._xsltProcessor = new XSLTProcessor();
         this._xsltProcessor.importStylesheet(this._xsl);
         this.onPropsChange();
