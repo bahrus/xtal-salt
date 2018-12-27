@@ -124,8 +124,7 @@ class XtalSalt extends XtallatX(HTMLElement) {
         return this._xmlString;
     }
     set xmlString(nv) {
-        if (nv === this._xmlString)
-            return;
+        //if(nv === this._xmlString) return;
         this._xmlString = nv;
         this._xml = this._domParser.parseFromString(nv, 'application/xml');
         this.onPropsChange();
@@ -134,8 +133,7 @@ class XtalSalt extends XtallatX(HTMLElement) {
         return this._xml;
     }
     set xml(nv) {
-        if (nv === this._xml)
-            return;
+        //if(nv === this._xml) return;
         const ua = navigator.userAgent;
         if ((ua.indexOf('Firefox') > -1) || (ua.indexOf('Edge') > -1)) {
             const outerHTML = nv.outerHTML;
@@ -151,8 +149,7 @@ class XtalSalt extends XtallatX(HTMLElement) {
         return this._xslString;
     }
     set xslString(nv) {
-        if (nv === this._xslString)
-            return;
+        //if(nv === this._xslString) return;
         this._xslString = nv;
         this._xsl = this._domParser.parseFromString(nv, 'application/xml');
         this.createProcessor();
