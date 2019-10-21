@@ -1,20 +1,25 @@
 {
   "name": "xtal-salt",
   "version": "0.0.15",
-  "description": "TBD",
+  "description": "Web Component wrapper around the XSLT processor",
   "main": "xtal-salt.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node node_modules/xtal-test/serve.js",
+    "doc": "wca analyze if-*.js --outFile custom-elements.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bahrus/xtal-salt.git"
   },
   "dependencies": {
-    "xtal-latx": "0.0.86"
+    "trans-render": "0.0.135",
+    "xtal-element": "0.0.86"
   },
   "devDependencies": {
-    "jiife": "0.0.10"
+    "jiife": "0.0.14",
+    "xtal-test": "0.0.20",
+    "es-module-shims": "0.4.5"
   },
   "author": "anderson.bruce.b@gmail.com",
   "license": "MIT",

@@ -1,9 +1,8 @@
-import { define } from 'xtal-latx/define.js';
-import { XtallatX, disabled } from 'xtal-latx/xtal-latx.js';
-// const xml_string = 'xml-string';
-// const xsl_string = 'xsl-string';
+import { define } from 'trans-render/define.js';
+import { disabled, hydrate } from 'trans-render/hydrate.js';
+import { XtallatX } from 'xtal-element/xtal-latx.js';
 const clear_selector = 'clear-selector';
-export class XtalSalt extends XtallatX(HTMLElement) {
+export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     constructor() {
         super(...arguments);
         this._domParser = new DOMParser();
@@ -19,7 +18,6 @@ export class XtalSalt extends XtallatX(HTMLElement) {
         return this._xmlString;
     }
     set xmlString(nv) {
-        //if(nv === this._xmlString) return;
         this._xmlString = nv;
         this._xml = this._domParser.parseFromString(nv, 'application/xml');
         this.onPropsChange();
@@ -62,18 +60,6 @@ export class XtalSalt extends XtallatX(HTMLElement) {
                 break;
         }
     }
-    // get xsl(){
-    //     return this._xsl;
-    // }
-    // set xsl(nv){
-    //     const t = (<any>nv) as HTMLTemplateElement;
-    //     if(t.localName === 'template'){
-    //         this._xsl = this.appendChild(t.content.cloneNode(true)) as Document
-    //     }else{
-    //         this._xsl = nv;
-    //     }
-    //     this.createProcessor();
-    // }
     createProcessor() {
         this._xsltProcessor = new XSLTProcessor();
         this._xsltProcessor.importStylesheet(this._xsl);
@@ -89,7 +75,7 @@ export class XtalSalt extends XtallatX(HTMLElement) {
     connectedCallback() {
         this._c = true;
         this.style.display = 'none';
-        this._upgradeProperties([disabled, 'xmlString', 'xslString', 'xml']);
+        this.propUp([disabled, 'xmlString', 'xslString', 'xml']);
         this.onPropsChange();
     }
     onPropsChange() {

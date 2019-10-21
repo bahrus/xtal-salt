@@ -220,12 +220,11 @@
                         </cd>
                     </catalog>
         </template>
-        <p-d on="load" to="xtal-salt" prop="xmlString" val="target.innerHTML"></p-d>
+        <p-d on="load" to=[-xml-string] val=target.innerHTML m=1></p-d>
         <template>
                 <?xml version="1.0" encoding="UTF-8"?>
                 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-        
                 <xsl:template match="/">
                     <h2>My CD Collection</h2>
                     <div>
@@ -243,9 +242,8 @@
                 </xsl:template>
                 </xsl:stylesheet>
         </template>
-        
-        <p-d on="load" prop="xslString" val="target.innerHTML"></p-d>
-        <xtal-salt></xtal-salt>
+        <p-d on="load" to=[-xsl-string]  val=target.innerHTML m=1></p-d>
+        <xtal-salt -xml-string -xsl-string></xtal-salt>
         <style>
                 .header .left,.header .right{
                     font-weight: 800;
@@ -261,9 +259,21 @@
                     flex:2 50%
                 }
             </style>
-        <script src="https://unpkg.com/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-        <script type="module" src="../xtal-salt.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
+
+        <script type=module src="https://cdn.pika.dev/pass-down"></script>
+        <!-- Use experimental import maps -->
+        <script defer src="../node_modules/es-module-shims/dist/es-module-shims.js"></script>
+        <script type="importmap-shim">
+        {
+            "imports": {
+                "xtal-element/": "../node_modules/xtal-element/",
+                "trans-render/": "../node_modules/trans-render/"
+            }
+        }
+        </script>
+        <script  type="module-shim">
+            import "../xtal-salt.js";
+        </script>
     </div>
 </body>
 </html>
