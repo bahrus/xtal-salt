@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "tags": [
+    {
+      "name": "xtal-salt",
+      "description": "Web Component wrapper around the XSLT processor",
+      "jsDoc": "/**\n * Web Component wrapper around the XSLT processor\n * @element xtal-salt\n */",
+      "attributes": [
+        {
+          "name": "disabled",
+          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
+          "jsDoc": "/**\r\n         * Any component that emits events should not do so if it is disabled.\r\n         * Note that this is not enforced, but the disabled property is made available.\r\n         * Users of this mix-in should ensure not to call \"de\" if this property is set to true.\r\n         * @attr\r\n         */",
+          "type": "boolean"
+        }
+      ],
+      "properties": [
+        {
+          "name": "val",
+          "type": "\"set\" | \"remove\""
+        },
+        {
+          "name": "disabled",
+          "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
+          "jsDoc": "/**\r\n         * Any component that emits events should not do so if it is disabled.\r\n         * Note that this is not enforced, but the disabled property is made available.\r\n         * Users of this mix-in should ensure not to call \"de\" if this property is set to true.\r\n         * @attr\r\n         */",
+          "type": "boolean"
+        },
+        {
+          "name": "evCount",
+          "description": "Tracks how many times each event type was called.",
+          "jsDoc": "/**\r\n         * Tracks how many times each event type was called.\r\n         */",
+          "type": "{ [key: string]: number; }"
+        },
+        {
+          "name": "asIs",
+          "type": "\"\" | \"-changed\""
+        },
+        {
+          "name": "xmlString",
+          "description": "XML input string",
+          "jsDoc": "/**\n     * XML input string\n     */",
+          "type": "any"
+        },
+        {
+          "name": "xml",
+          "description": "XML input (parsed) document",
+          "jsDoc": "/**\n     * XML input (parsed) document\n     */",
+          "type": "any"
+        },
+        {
+          "name": "xslString",
+          "description": "XSL input string",
+          "jsDoc": "/**\n     * XSL input string\n     * @type {string}\n     */",
+          "type": "any"
+        },
+        {
+          "name": "clearSelector",
+          "type": "any"
+        },
+        {
+          "name": "target",
+          "type": "any"
+        }
+      ],
+      "events": [],
+      "slots": []
+    }
+  ]
+}

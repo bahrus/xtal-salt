@@ -2,6 +2,10 @@ import { define } from 'trans-render/define.js';
 import { disabled, hydrate } from 'trans-render/hydrate.js';
 import { XtallatX } from 'xtal-element/xtal-latx.js';
 const clear_selector = 'clear-selector';
+/**
+ * Web Component wrapper around the XSLT processor
+ * @element xtal-salt
+ */
 export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     constructor() {
         super(...arguments);
@@ -17,6 +21,9 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     get xmlString() {
         return this._xmlString;
     }
+    /**
+     * XML input string
+     */
     set xmlString(nv) {
         this._xmlString = nv;
         this._xml = this._domParser.parseFromString(nv, 'application/xml');
@@ -25,6 +32,9 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     get xml() {
         return this._xml;
     }
+    /**
+     * XML input (parsed) document
+     */
     set xml(nv) {
         //if(nv === this._xml) return;
         const ua = navigator.userAgent;
@@ -41,6 +51,10 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     get xslString() {
         return this._xslString;
     }
+    /**
+     * XSL input string
+     * @type {String}
+     */
     set xslString(nv) {
         //if(nv === this._xslString) return;
         this._xslString = nv;
