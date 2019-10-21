@@ -92,7 +92,7 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)){
         this._c = true;
         this.style.display = 'none';
         this.propUp([disabled, 'xmlString', 'xslString', 'xml']);
-        this.onPropsChange();
+        //this.onPropsChange();
     }
 
 
