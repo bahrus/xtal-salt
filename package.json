@@ -1,6 +1,6 @@
 {
   "name": "xtal-salt",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Web Component wrapper around the XSLT processor",
   "main": "xtal-salt.js",
   "module": "xtal-salt.js",
