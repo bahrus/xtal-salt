@@ -3,6 +3,7 @@
   "version": "0.0.15",
   "description": "Web Component wrapper around the XSLT processor",
   "main": "xtal-salt.js",
+  "module": "xtal-salt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node node_modules/xtal-test/serve.js",

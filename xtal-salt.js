@@ -64,6 +64,10 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     get clearSelector() {
         return this._clearSelector;
     }
+    /**
+     * CSS Selector inside target that should be removed prior to rendering/
+     * @attr clear-selector
+     */
     set clearSelector(nv) {
         this.attr(clear_selector, nv);
     }
@@ -82,6 +86,9 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     get target() {
         return this._target;
     }
+    /**
+     * Target element to render the result of the XSLT transform.
+     */
     set target(t) {
         this._target = t;
         this.onPropsChange();
@@ -110,4 +117,3 @@ export class XtalSalt extends XtallatX(hydrate(HTMLElement)) {
     }
 }
 define(XtalSalt);
-//# sourceMappingURL=xtal-salt.js.map

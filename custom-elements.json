@@ -11,6 +11,12 @@
           "description": "Any component that emits events should not do so if it is disabled.\r\nNote that this is not enforced, but the disabled property is made available.\r\nUsers of this mix-in should ensure not to call \"de\" if this property is set to true.",
           "jsDoc": "/**\r\n         * Any component that emits events should not do so if it is disabled.\r\n         * Note that this is not enforced, but the disabled property is made available.\r\n         * Users of this mix-in should ensure not to call \"de\" if this property is set to true.\r\n         * @attr\r\n         */",
           "type": "boolean"
+        },
+        {
+          "name": "clear-selector",
+          "description": "CSS Selector inside target that should be removed prior to rendering/",
+          "jsDoc": "/**\n     * CSS Selector inside target that should be removed prior to rendering/\n     * @attr clear-selector\n     */",
+          "type": "any"
         }
       ],
       "properties": [
@@ -49,15 +55,19 @@
         {
           "name": "xslString",
           "description": "XSL input string",
-          "jsDoc": "/**\n     * XSL input string\n     * @type {string}\n     */",
+          "jsDoc": "/**\n     * XSL input string\n     * @type {String}\n     */",
           "type": "any"
         },
         {
           "name": "clearSelector",
+          "description": "CSS Selector inside target that should be removed prior to rendering/",
+          "jsDoc": "/**\n     * CSS Selector inside target that should be removed prior to rendering/\n     * @attr clear-selector\n     */",
           "type": "any"
         },
         {
           "name": "target",
+          "description": "Target element to render the result of the XSLT transform.",
+          "jsDoc": "/**\n     * Target element to render the result of the XSLT transform.\n     */",
           "type": "any"
         }
       ],
