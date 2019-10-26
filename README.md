@@ -1,8 +1,8 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/xtal-salt)
 
-<a href="https://nodei.co/npm/xtal-salt/"><img src="https://nodei.co/npm/xtal-salt.png"></a>
+<a href="https://nodei.co/npm/xtal-salt/"><img src="https://nodei.co/npm/xtal-salt.png" alt="NPM Info"></a>
 
-<img src="http://img.badgesize.io/https://unpkg.com/xtal-salt@0.0.15/dist/xtal-salt.iife.min.js?compression=gzip">
+<img src="https://badgen.net/bundlephobia/minzip/xtal-salt" alt="Bundle size">
 
 # xtal-salt
 
@@ -73,7 +73,7 @@ NB:  [CD's](https://www.w3schools.com/xml/xsl_intro.asp) were a popular storage 
             </catalog>
         </template>
         <!-- Pass down ("p-d") content of template above to xtal-salt's xmlString prop -->
-        <p-d on="load" to="xtal-salt" prop="xmlString" val="target.innerHTML" m="1"></p-d>
+        <p-d on=load to=[-xml-string] val=target.innerHTML m=1></p-d>
         <template>
                 <?xml version="1.0" encoding="UTF-8"?>
                 <xsl:stylesheet version="1.0"
@@ -97,8 +97,8 @@ NB:  [CD's](https://www.w3schools.com/xml/xsl_intro.asp) were a popular storage 
                 </xsl:stylesheet>
         </template>
         <!-- pass content of template above to xslString prop of next element -->
-        <p-d on="load" prop="xslString" val="target.innerHTML"></p-d>
-        <xtal-salt></xtal-salt>
+        <p-d on=load to=[-xsl-string] val=target.innerHTML m=1></p-d>
+        <xtal-salt -xml-string -xsl-string></xtal-salt>
         <div></div>
         <style>
                 .header .left,.header .right{
@@ -115,9 +115,10 @@ NB:  [CD's](https://www.w3schools.com/xml/xsl_intro.asp) were a popular storage 
                     flex:2 50%
                 }
             </style>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/xtal-salt@0.0.6/dist/xtal-salt.iife.js"></script>
-        <script type="module" src="https://cdn.jsdelivr.net/npm/p-d.p-u@0.0.97/dist/p-all.iife.js"></script>
+        <script type="module" src="https://cdn.pika.dev/xtal-salt/0.0.16/"></script>
+        <script type="module" src="https://cdn.pika.dev/pass-down"></script>
     </div>
+</template>
 </custom-element-demo>
 ```
 -->
@@ -256,7 +257,14 @@ Based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriel
 ## Viewing Your Element
 
 ```
-$ polymer serve
+$ npm install
+$ npm run serve
+```
+
+or
+
+```html
+<script>
 ```
 
 ## Running Tests

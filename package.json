@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "jiife": "0.0.14",
-    "xtal-test": "0.0.20",
+    "xtal-test": "0.0.21",
     "es-module-shims": "0.4.5"
   },
   "author": "anderson.bruce.b@gmail.com",
